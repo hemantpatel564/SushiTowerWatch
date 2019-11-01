@@ -57,10 +57,12 @@ class GameScene: SKScene,WCSessionDelegate
     // Show life and score labels
     let lifeLabel = SKLabelNode(text:"Lives: ")
     let scoreLabel = SKLabelNode(text:"Score: ")
+    let timerLabel = SKLabelNode(text:"Time: ")
     
     var lives = 5
     var score = 0
-    
+    var timer : Int = 25
+    var frameCounter = 0
     
     func spawnSushi() {
         
@@ -136,6 +138,15 @@ class GameScene: SKScene,WCSessionDelegate
         self.lifeLabel.fontName = "Avenir"
         self.lifeLabel.fontSize = 15
         addChild(lifeLabel)
+        
+        //Timer Label
+        
+        // Life label
+        self.timerLabel.position.x = 40
+        self.timerLabel.position.y = size.height - 180
+        self.timerLabel.fontName = "Avenir"
+        self.timerLabel.fontSize = 15
+        addChild(timerLabel)
     }
     
     func buildTower() {
@@ -146,6 +157,45 @@ class GameScene: SKScene,WCSessionDelegate
     
     
     override func update(_ currentTime: TimeInterval) {
+        
+        frameCounter = frameCounter + 1
+        if(frameCounter % 50 == 0)
+        {
+            if(timer>=1 ){
+                timer = timer - 1;
+                
+                timerLabel.text = "Time: \(timer)"
+            }
+        }
+        
+        if(timer == 15)
+        {
+            let message = ["time" : String(timer)] as [String: Any]
+            WCSession.default.sendMessage(message, replyHandler: nil)
+        }
+        else if(timer == 10)
+        {
+            
+            let message = ["time" : String(timer)] as [String: Any]
+                WCSession.default.sendMessage(message, replyHandler: nil)
+        }
+            else if(timer == 5)
+            {
+                
+                let message = ["time" : String(timer)] as [String: Any]
+                    WCSession.default.sendMessage(message, replyHandler: nil)
+                
+            }
+            
+            else
+            
+            {
+            
+                let message = ["time" : String(timer)] as [String: Any]
+                WCSession.default.sendMessage(message, replyHandler: nil)
+            
+            }
+       
         
     }
     
@@ -297,5 +347,10 @@ class GameScene: SKScene,WCSessionDelegate
             self.spawnSushi()
             
         }
+    }
+    
+    func updateTimer()
+    {
+        
     }
 }

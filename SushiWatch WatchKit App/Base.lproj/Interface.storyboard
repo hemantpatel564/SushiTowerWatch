@@ -19,12 +19,16 @@
                                 <action selector="LeftButtonPressed" destination="AgC-eL-Hgc" id="o0O-oA-Efi"/>
                             </connections>
                         </button>
+                        <label alignment="left" text="Timer :" id="ct7-D2-QlI"/>
                         <button width="1" alignment="center" verticalAlignment="bottom" title="Right" id="Zex-yc-cvG">
                             <connections>
                                 <action selector="RightButtonPressed" destination="AgC-eL-Hgc" id="38T-aM-bfY"/>
                             </connections>
                         </button>
                     </items>
+                    <connections>
+                        <outlet property="TimerLabel" destination="ct7-D2-QlI" id="yvy-In-Dl0"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="118" y="108"/>

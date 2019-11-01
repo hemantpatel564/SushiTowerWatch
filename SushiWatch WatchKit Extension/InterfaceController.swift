@@ -13,10 +13,33 @@ import WatchConnectivity
 
 class InterfaceController: WKInterfaceController,WCSessionDelegate
 {
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    
+    @IBOutlet weak var TimerLabel: WKInterfaceLabel!
+    
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?){
         
     }
     
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        
+        
+        let remainingTime:String = message["time"] as! String
+        
+        if(remainingTime != "100"){
+            
+            if(remainingTime == "0"){
+                TimerLabel.setTextColor(UIColor.red)
+                TimerLabel.setText("GAME OVER")
+            }
+            else{
+                TimerLabel.setText("\(remainingTime) seconds left")
+            }
+            
+            
+        }
+}
+
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
