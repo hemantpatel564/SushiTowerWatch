@@ -159,7 +159,7 @@ class GameScene: SKScene,WCSessionDelegate
     override func update(_ currentTime: TimeInterval) {
         
         frameCounter = frameCounter + 1
-        if(frameCounter % 50 == 0)
+        if(frameCounter % 60 == 0)
         {
             if(timer>=1 ){
                 timer = timer - 1;

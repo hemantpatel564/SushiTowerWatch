@@ -26,18 +26,19 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate
         
         let remainingTime:String = message["time"] as! String
         
-        if(remainingTime != "100"){
             
-            if(remainingTime == "0"){
-                TimerLabel.setTextColor(UIColor.red)
-                TimerLabel.setText("GAME OVER")
+            if(remainingTime == "0")
+            {
+                TimerLabel.setTextColor(UIColor.blue)
+                TimerLabel.setText("Game Over")
             }
             else{
-                TimerLabel.setText("\(remainingTime) seconds left")
+                TimerLabel.setText("\(remainingTime) Seconds Remaining")
             }
+        
+        print(remainingTime)
             
-            
-        }
+        
 }
 
 
